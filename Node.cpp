@@ -73,11 +73,11 @@ void Node::draw(float x,float y)
 { 
 	graphics::Brush br; 
 
-	br.texture = "assets\\router.png";
+	br.texture = "assets\\user.png";
 	
 	br.outline_opacity = 0.0f;
 
-	float width = 40;
+	float width = 60;
 	float height = width;
  
 	graphics::drawRect(x, y, width, height, br);
