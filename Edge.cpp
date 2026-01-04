@@ -1,4 +1,5 @@
 #include "Edge.h"
+#include <graphics.h>
 
 unsigned int Edge::global_edge_id = 0;
 unsigned int Edge::active_edges = 0;
@@ -71,4 +72,18 @@ Node* Edge::getStart() const
 Node* Edge::getEnd() const
 {
 	return end;
+}
+
+void Edge::draw()
+{
+	graphics::Brush br; 
+
+	
+	br.outline_opacity = 0.5f;
+	br.outline_width = 100;
+	br.outline_color[0] = 1.0f;
+	br.outline_color[1] = 0.0f;
+	br.outline_color[2] = 0.0f;
+ 
+	graphics::drawLine(start->draw_rect->x, start->draw_rect->y, end->draw_rect->x, end->draw_rect->y,br);
 }

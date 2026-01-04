@@ -42,4 +42,8 @@ public:
 	// responsible to remove the connection between
 	// the edges and any nodes it connects.
 	void removeEdge(unsigned int);
+
+	Node* getNode(unsigned int);
+
+	void draw();
 };

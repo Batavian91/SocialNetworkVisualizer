@@ -1,5 +1,6 @@
 #pragma once
 #include "Edge.h"
+#include "Rectangle.h"
 #include <vector>
 #include <unordered_map>
 
@@ -33,7 +34,9 @@ private:
 	// the edges thar are connected to it
 	std::unordered_map<unsigned int, Edge*> connected_edges;
 
+
 public:
+	Rectangle* draw_rect = nullptr;
 	// Node constructor
 	Node();
 
@@ -62,4 +65,6 @@ public:
 	// to remove all its connected Edges. This is a 
 	// getter for the Node's connected edges.
 	std::vector<unsigned int> getConnectedEdges() const;
+
+	void draw(float x,float y);
 };

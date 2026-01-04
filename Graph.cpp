@@ -1,7 +1,8 @@
 #include "Graph.h"
 
 Graph::Graph()
-{}
+{
+}
 
 Graph::~Graph()
 {
@@ -74,4 +75,21 @@ void Graph::removeEdge(unsigned int edgeId)
 		// remove edge from map
 		map_of_edges.erase(iter);
 	}
+}
+Node* Graph::getNode(unsigned int nodeId)
+{
+	return map_of_nodes[nodeId];
+}
+
+void Graph::draw() {
+	float x = 0;
+	float y = 200;
+	for (std::pair<unsigned int, Node*> node: map_of_nodes) {
+		x += 100;
+		y = y == 200 ? 300 : 200;
+		node.second->draw(x,y);
+	}
+	for (std::pair<unsigned int, Edge*> edge: map_of_edges) {
+		edge.second->draw();
+	} 
 }

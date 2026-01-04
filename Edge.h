@@ -57,4 +57,6 @@ public:
 
 	// second connected Node getter
 	Node* getEnd() const;
+
+	void draw();
 };

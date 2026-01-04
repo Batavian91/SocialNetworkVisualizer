@@ -3,6 +3,7 @@
 #ifdef _DEBUG
 #include <iostream>
 #endif
+#include <graphics.h>
 
 unsigned int Node::global_node_id = 0;
 unsigned int Node::active_nodes = 0;
@@ -24,6 +25,7 @@ Node::~Node()
 #endif
 
 	--active_nodes;
+	delete draw_rect;
 }
 
 unsigned int Node::getActiveNodes()
@@ -65,4 +67,30 @@ std::vector<unsigned int> Node::getConnectedEdges() const
 		edges.push_back(iter->first);
 
 	return edges;
+}
+
+void Node::draw(float x,float y)
+{ 
+	graphics::Brush br; 
+
+	br.texture = "assets\\router.png";
+	
+	br.outline_opacity = 0.0f;
+
+	float width = 40;
+	float height = width;
+ 
+	graphics::drawRect(x, y, width, height, br);
+	draw_rect = new Rectangle;
+	draw_rect->x = x;
+	draw_rect->y = y;
+	draw_rect->width = width;
+	draw_rect->height= height;
+
+	br.fill_color[0] = 0.5f;
+	br.fill_color[1] = 0.0f;
+	br.fill_color[2] = 0.0f;
+
+	graphics::resetPose();
+	drawText(x-width/2, y + height, 30, "Node " + std::to_string(uid), br);
 }
