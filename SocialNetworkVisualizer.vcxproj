@@ -136,7 +136,6 @@
     <ClInclude Include="Edge.h" />
     <ClInclude Include="Graph.h" />
     <ClInclude Include="Node.h" />
-    <ClInclude Include="Rectangle.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Edge.cpp" />

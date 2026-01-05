@@ -1,32 +1,4 @@
-#include "Node.h"
-#include "Edge.h"
 #include "Graph.h"
-//#include <iostream>
-//
-//int main()
-//{
-//	Node n1;
-//	Node n2;
-//	Node n3;
-//	Node n4;
-//	Node n5;
-//	Node n6;
-//	Node n7;
-//	Node n8;
-//	Node n9;
-//	Node n10;
-//	Node n11;
-//
-//	Edge edge1;
-//	Edge edge2;
-//	Edge edge3;
-//	Edge edge4;
-//	Edge edge5;
-//	Edge edge6;
-//
-//	return 0;
-//}
-
 #include "include/graphics.h"
 #include "include/scancodes.h"
 
@@ -64,22 +36,22 @@ void draw()
 
 int main()
 {
-	Graph g;
-	unsigned int id = g.addNode();
-	unsigned int id2 = g.addNode();
-	unsigned int id3 = g.addNode();
-	unsigned int id4 = g.addNode();
-	unsigned int id5 = g.addNode();
-	unsigned int id6 = g.addNode();
-	g.addEdge(g.getNode(id), g.getNode(id2));
-	g.addEdge(g.getNode(id3), g.getNode(id6));
-	g.addEdge(g.getNode(id3), g.getNode(id5));
-	g.addEdge(g.getNode(id4), g.getNode(id5));
-	g.addEdge(g.getNode(id6), g.getNode(id2));
+	Graph* g = new Graph;
+	unsigned int id = g->addNode();
+	unsigned int id2 = g->addNode();
+	unsigned int id3 = g->addNode();
+	unsigned int id4 = g->addNode();
+	unsigned int id5 = g->addNode();
+	unsigned int id6 = g->addNode();
+	g->addEdge(g->getNode(id), g->getNode(id2));
+	g->addEdge(g->getNode(id3), g->getNode(id6));
+	g->addEdge(g->getNode(id3), g->getNode(id5));
+	g->addEdge(g->getNode(id4), g->getNode(id5));
+	g->addEdge(g->getNode(id6), g->getNode(id2));
 
 	graphics::createWindow(1200, 600, "Hello World");
 
-	graphics::setDrawFunction([&g] {g.draw(); });
+	graphics::setDrawFunction([g] {g->draw(); });
 	graphics::setUpdateFunction(update);
 
 	graphics::setCanvasSize(1000, 500);
@@ -94,6 +66,8 @@ int main()
 	graphics::setFont("assets\\orange juice 2.0.ttf");
 
 	graphics::startMessageLoop();
+
+	delete g;
 
 	return 0;
 }

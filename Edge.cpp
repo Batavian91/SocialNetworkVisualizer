@@ -1,6 +1,10 @@
 #include "Edge.h"
 #include <graphics.h>
 
+#ifdef _DEBUG
+#include <iostream>
+#endif
+
 unsigned int Edge::global_edge_id = 0;
 unsigned int Edge::active_edges = 0;
 
@@ -8,11 +12,19 @@ Edge::Edge()
 	: uid(++global_edge_id),
 	start(nullptr), end(nullptr)
 {
+#ifdef _DEBUG
+	std::cout << "Edge constructor: " << uid << std::endl;
+#endif
+
 	++active_edges;
 }
 
 Edge::~Edge()
 {
+#ifdef _DEBUG
+	std::cout << "Edge destructor: " << uid << std::endl;
+#endif
+
 	if (start != nullptr)
 	{
 		// remove this edge from the Node's vector
@@ -76,14 +88,16 @@ Node* Edge::getEnd() const
 
 void Edge::draw()
 {
-	graphics::Brush br; 
+	graphics::Brush brush;
 
-	
-	br.outline_opacity = 0.5f;
-	br.outline_width = 100;
-	br.outline_color[0] = 1.0f;
-	br.outline_color[1] = 0.0f;
-	br.outline_color[2] = 0.0f;
- 
-	graphics::drawLine(start->draw_rect->x, start->draw_rect->y, end->draw_rect->x, end->draw_rect->y,br);
+	brush.outline_opacity = 0.5f;
+	brush.outline_width = 100.0f;
+	brush.outline_color[0] = 1.0f;
+	brush.outline_color[1] = 0.0f;
+	brush.outline_color[2] = 0.0f;
+
+	graphics::drawLine(
+		start->getX(), start->getY(),
+		end->getX(), end->getY(),
+		brush);
 }

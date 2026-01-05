@@ -24,6 +24,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "assets", "assets", "{5262F1
 		assets\hit1.wav = assets\hit1.wav
 		assets\iron.png = assets\iron.png
 		assets\orange juice 2.0.ttf = assets\orange juice 2.0.ttf
+		assets\user.png = assets\user.png
 	EndProjectSection
 EndProject
 Global

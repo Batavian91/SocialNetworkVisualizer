@@ -10,7 +10,8 @@
  * (see CPP_10_Classes.pdf -> p. 28-29)
  */
 
- // forward declaration to avoid circular dependency
+ // forward declaration to avoid 
+ // circular dependency
 class Node;
 
 class Edge
@@ -58,5 +59,6 @@ public:
 	// second connected Node getter
 	Node* getEnd() const;
 
+	// draws an Edge that connects two Nodes
 	void draw();
 };
