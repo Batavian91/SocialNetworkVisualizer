@@ -10,7 +10,7 @@ void update(float ms)
 	graphics::getMouseState(mouse);
 	if (mouse.button_left_released)
 	{
-		graphics::playSound("assets\\door2.wav", 1.0f, false);
+		graphics::playSound("assets\\hit1.wav", 1.0f, false);
 	}
 }
 
@@ -21,7 +21,7 @@ void draw()
 
 	graphics::setOrientation(45);
 
-	br.texture = "assets\\boy2.png";
+	br.texture = "avatar_02_128.png";
 	br.outline_opacity = 0.0f;
 
 	graphics::drawRect(500, 250, 200, 200, br);

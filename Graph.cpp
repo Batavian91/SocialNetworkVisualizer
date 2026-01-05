@@ -19,7 +19,7 @@ Graph::~Graph()
 
 unsigned int Graph::addNode()
 {
-	Node* node = new Node;
+	Node* node = new Person;
 	map_of_nodes.insert({ node->getUID(), node });
 
 	return node->getUID();
@@ -46,7 +46,7 @@ void Graph::removeNode(unsigned int nodeId)
 
 unsigned int Graph::addEdge(Node* n1, Node* n2)
 {
-	Edge* edge = new Edge;
+	Edge* edge = new Connection;
 	map_of_edges.insert({ edge->getUID(), edge });
 
 	// add edge to the first node
@@ -83,12 +83,12 @@ Node* Graph::getNode(unsigned int nodeId)
 
 void Graph::draw() 
 {
-	float x = 0;
-	float y = 200;
+	float x = 0.0f;
+	float y = 200.0f;
 	for (std::pair<unsigned int, Node*> node: map_of_nodes) 
 	{
-		x += 100;
-		y = y == 200 ? 300 : 200;
+		x += 100.0f;
+		y = y == 200.0f ? 300.0f : 200.0f;
 		node.second->draw(x, y, 60.0f, 60.0f);
 	}
 	for (std::pair<unsigned int, Edge*> edge: map_of_edges) 

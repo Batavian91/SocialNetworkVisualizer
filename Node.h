@@ -29,9 +29,6 @@ private:
 	// a unique id for each node
 	const unsigned int uid;
 
-	// coordinates and sizes for each Node
-	float m_x, m_y, m_width, m_height;
-
 	// each node has a map of pointers to 
 	// the edges thar are connected to it
 	std::unordered_map<unsigned int, Edge*> connected_edges;
@@ -50,18 +47,6 @@ public:
 	// unique id getter
 	unsigned int getUID() const;
 
-	// getters for each Node's coordinates and sizes
-	float getX() const;
-	float getY() const;
-	float getWidth() const;
-	float getHeight() const;
-
-	// setters for each Node's coordinates and sizes
-	void setX(float);
-	void setY(float);
-	void setWidth(float);
-	void setHeight(float);
-
 	// This method is called by a Graph instance.
 	// When an edge is connected to a node, the node 
 	// stores a pointer to that edge by inserting it 
@@ -78,6 +63,12 @@ public:
 	// getter for the Node's connected edges.
 	std::vector<unsigned int> getConnectedEdges() const;
 
-	// draws a Node
-	void draw(float, float, float, float);
+	// pure virtual - returns x-axis coordinate
+	virtual float getX() const = 0;
+
+	// pure virtual - returns y-axis coordinate
+	virtual float getY() const = 0;
+
+	// pure virtual - draws a Node 
+	virtual void draw(float, float, float, float) = 0;
 };

@@ -1,6 +1,6 @@
 #pragma once
-#include "Edge.h"
-#include "Node.h"
+#include "Connection.h"
+#include "Person.h"
 
 class Graph
 {

@@ -39,7 +39,7 @@ public:
 	Edge();
 
 	// Edge destructor
-	~Edge();
+	virtual ~Edge();
 
 	// active edges getter
 	static unsigned int getActiveEdges();
@@ -54,11 +54,12 @@ public:
 	void setEndingNode(Node*);
 
 	// first connected Node getter
-	Node* getStart() const;
+	Node* getStartingNode() const;
 
 	// second connected Node getter
-	Node* getEnd() const;
+	Node* getEndingNode() const;
 
-	// draws an Edge that connects two Nodes
-	void draw();
+	// pure virtual - draws an Edge 
+	// that connects two Nodes
+	virtual void draw() = 0;
 };

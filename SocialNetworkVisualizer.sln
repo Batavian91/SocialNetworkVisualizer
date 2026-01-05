@@ -20,9 +20,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lib", "lib", "{E3C87843-DEF
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "assets", "assets", "{5262F139-6DCC-4FE2-998F-5D64D0FF3384}"
 	ProjectSection(SolutionItems) = preProject
-		assets\boy2.png = assets\boy2.png
+		assets\avatar_01_128.png = assets\avatar_01_128.png
+		assets\avatar_02_128.png = assets\avatar_02_128.png
+		assets\avatar_03_128.png = assets\avatar_03_128.png
+		assets\avatar_04_128.png = assets\avatar_04_128.png
+		assets\avatar_05_128.png = assets\avatar_05_128.png
+		assets\avatar_06_128.png = assets\avatar_06_128.png
+		assets\avatar_07_128.png = assets\avatar_07_128.png
+		assets\avatar_08_128.png = assets\avatar_08_128.png
+		assets\avatar_09_128.png = assets\avatar_09_128.png
+		assets\avatar_10_128.png = assets\avatar_10_128.png
+		assets\avatar_11_128.png = assets\avatar_11_128.png
+		assets\avatar_12_128.png = assets\avatar_12_128.png
 		assets\hit1.wav = assets\hit1.wav
-		assets\iron.png = assets\iron.png
 		assets\orange juice 2.0.ttf = assets\orange juice 2.0.ttf
 		assets\user.png = assets\user.png
 	EndProjectSection
