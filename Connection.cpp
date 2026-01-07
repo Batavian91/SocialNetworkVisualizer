@@ -18,11 +18,11 @@ void Connection::draw()
 	brush.outline_color[0] = 1.0f;
 	brush.outline_color[1] = 0.0f;
 	brush.outline_color[2] = 0.0f;
-	
+
 	graphics::drawLine(
-		getStartingNode()->getX(), 
+		getStartingNode()->getX(),
 		getStartingNode()->getY(),
-		getEndingNode()->getX(), 
+		getEndingNode()->getX(),
 		getEndingNode()->getY(),
 		brush);
 }

@@ -1,4 +1,5 @@
 #include "Graph.h"
+#include "Button.h"
 
 Graph::Graph()
 {
@@ -95,4 +96,9 @@ void Graph::draw()
 	{
 		edge.second->draw();
 	} 
+	Button button("T E S T");
+	button.draw(500.f, 100.0f, 400.0f, 50.0f);
+
+	Button button1("T E S T");
+	button1.draw(400.f, 125.0f, 200.0f, 50.0f);
 }

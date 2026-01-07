@@ -1,6 +1,18 @@
+#include "Application.h"
 #include "Graph.h"
-#include "include/graphics.h"
-#include "include/scancodes.h"
+#include "Button.h"
+#include "Menu.h"
+#include <graphics.h>
+#include <functional>
+
+void init()
+{
+	graphics::createWindow(1200, 600,
+		"Social Network Visualizer");
+	graphics::setCanvasSize(1024.0f, 512.0f);
+	graphics::setCanvasScaleMode(graphics::
+		CANVAS_SCALE_FIT);
+}
 
 // The custom callback function that the library calls 
 // to check for and set the current application state.
@@ -12,26 +24,6 @@ void update(float ms)
 	{
 		graphics::playSound("assets\\hit1.wav", 1.0f, false);
 	}
-}
-
-// The window content drawing function.
-void draw()
-{
-	graphics::Brush br;
-
-	graphics::setOrientation(45);
-
-	br.texture = "avatar_02_128.png";
-	br.outline_opacity = 0.0f;
-
-	graphics::drawRect(500, 250, 200, 200, br);
-
-	br.fill_color[0] = 0.5f;
-	br.fill_color[1] = 0.0f;
-	br.fill_color[2] = 0.0f;
-
-	graphics::resetPose();
-	drawText(300, 440, 70, "Hello World!", br);
 }
 
 int main()
@@ -49,25 +41,24 @@ int main()
 	g->addEdge(g->getNode(id4), g->getNode(id5));
 	g->addEdge(g->getNode(id6), g->getNode(id2));
 
-	graphics::createWindow(1200, 600, "Hello World");
+	Application* app = new Application;
+	app->init();
 
+	//init();
+
+	//Menu* m = new Menu;
+
+	//m->init();
+	
 	graphics::setDrawFunction([g] {g->draw(); });
+	//graphics::setDrawFunction([m] { m->draw(); });
 	graphics::setUpdateFunction(update);
-
-	graphics::setCanvasSize(1000, 500);
-	graphics::setCanvasScaleMode(graphics::CANVAS_SCALE_FIT);
-
-	graphics::Brush br;
-	br.fill_color[0] = 0.5f;
-	br.fill_color[1] = 0.7f;
-	br.fill_color[2] = 0.9f;
-	graphics::setWindowBackground(br);
-
-	graphics::setFont("assets\\orange juice 2.0.ttf");
-
 	graphics::startMessageLoop();
+	//graphics::destroyWindow();
 
+	//delete m;
 	delete g;
+	delete app;
 
 	return 0;
 }
