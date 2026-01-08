@@ -134,12 +134,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Application.h" />
+    <ClInclude Include="AppState.h" />
     <ClInclude Include="Button.h" />
     <ClInclude Include="Connection.h" />
     <ClInclude Include="Edge.h" />
     <ClInclude Include="Graph.h" />
     <ClInclude Include="Node.h" />
     <ClInclude Include="Person.h" />
+    <ClInclude Include="Submenu.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Button.cpp" />
@@ -150,6 +152,7 @@
     <ClCompile Include="Node.cpp" />
     <ClCompile Include="Person.cpp" />
     <ClCompile Include="Application.cpp" />
+    <ClCompile Include="Submenu.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

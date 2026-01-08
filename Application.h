@@ -1,11 +1,11 @@
 #pragma once
-//#include "Graph.h"
-#include <graphics.h>
 
 class Application
 {
 private:
-	//Graph* graph;
+	static Application* app_instance;
+	Application();
+	~Application();
 public:
 	const int WINDOW_WIDTH;
 	const int WINDOW_HEIGHT;
@@ -15,8 +15,8 @@ public:
 	const float BUTTON_Y;
 	const float BUTTON_WIDTH;
 	const float BUTTON_HEIGHT;
-	Application();
-	~Application();
+	static Application* getInstance();
+	static void releaseInstance();
 	void init();
 	void draw();
 	void update(float);

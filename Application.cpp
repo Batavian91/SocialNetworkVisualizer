@@ -1,5 +1,9 @@
 #include "Application.h"
+#include "AppState.h"
 #include "Button.h"
+#include <graphics.h>
+
+Application* Application::app_instance = nullptr;
 
 Application::Application()
 	: WINDOW_WIDTH(1200),
@@ -15,7 +19,20 @@ Application::Application()
 
 Application::~Application()
 {
-	graphics::destroyWindow();
+}
+
+Application* Application::getInstance()
+{
+	if (!app_instance)
+		app_instance = new Application;
+
+	return app_instance;
+}
+
+void Application::releaseInstance()
+{
+	if (app_instance)
+		delete app_instance;
 }
 
 void Application::init()
@@ -54,7 +71,7 @@ void Application::update(float ms)
 {
 	graphics::MouseState mouse;
 	graphics::getMouseState(mouse);
-	
+
 	float mouse_pos_x =
 		(float)graphics::windowToCanvasX(mouse.cur_pos_x);
 	float mouse_pos_y =
@@ -68,6 +85,10 @@ void Application::update(float ms)
 	{
 		graphics::playSound("assets\\hit1.wav",
 			1.0f, false);
+
+		// TO BE ADDED AFTER SUBMENU IS FINISHED
+		//AppState state = AppState::SUBMENU;
+		//graphics::setUserData(&state);
 	}
 	else if (mouse.button_left_pressed
 		&& mouse_pos_x > BUTTON_X - 0.5f * BUTTON_WIDTH
@@ -81,6 +102,10 @@ void Application::update(float ms)
 			1.0f, false);
 		graphics::playSound("assets\\hit1.wav",
 			1.0f, false);
+
+		// TO BE ADDED AFTER GRAPH IS REFINED
+		//AppState state = AppState::GRAPH;
+		//graphics::setUserData(&state);
 	}
 	else if (mouse.button_left_pressed
 		&& mouse_pos_x > BUTTON_X - 0.5f * BUTTON_WIDTH
