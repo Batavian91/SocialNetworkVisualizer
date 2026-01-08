@@ -83,7 +83,7 @@ Node* Graph::getNode(unsigned int nodeId)
 }
 
 void Graph::draw() 
-{
+{/*
 	float x = 0.0f;
 	float y = 200.0f;
 	for (std::pair<unsigned int, Node*> node: map_of_nodes) 
@@ -95,10 +95,15 @@ void Graph::draw()
 	for (std::pair<unsigned int, Edge*> edge: map_of_edges) 
 	{
 		edge.second->draw();
-	} 
-	Button button("T E S T");
-	button.draw(500.f, 100.0f, 400.0f, 50.0f);
+	} */
 
-	Button button1("T E S T");
-	button1.draw(400.f, 125.0f, 200.0f, 50.0f);
+	Button button0("NEW PROFILE");
+	button0.drawButton(512.f, 125.0f, 400.0f, 68.0f);
+
+	Button button1("SIMULATOR");
+	button1.drawButton(512.f, 250.0f, 400.0f, 68.0f);
+
+	Button button2("EXIT");
+	button2.drawButton(512.f, 375.0f, 400.0f, 68.0f);
+
 }

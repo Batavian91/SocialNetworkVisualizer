@@ -1,30 +1,19 @@
 #include "Application.h"
 #include "Graph.h"
 #include "Button.h"
-#include "Menu.h"
 #include <graphics.h>
-#include <functional>
-
-void init()
-{
-	graphics::createWindow(1200, 600,
-		"Social Network Visualizer");
-	graphics::setCanvasSize(1024.0f, 512.0f);
-	graphics::setCanvasScaleMode(graphics::
-		CANVAS_SCALE_FIT);
-}
 
 // The custom callback function that the library calls 
 // to check for and set the current application state.
-void update(float ms)
-{
-	graphics::MouseState mouse;
-	graphics::getMouseState(mouse);
-	if (mouse.button_left_released)
-	{
-		graphics::playSound("assets\\hit1.wav", 1.0f, false);
-	}
-}
+//void update(float ms)
+//{
+//	graphics::MouseState mouse;
+//	graphics::getMouseState(mouse);
+//	if (mouse.button_left_released)
+//	{
+//		graphics::playSound("assets\\hit1.wav", 1.0f, false);
+//	}
+//}
 
 int main()
 {
@@ -43,20 +32,11 @@ int main()
 
 	Application* app = new Application;
 	app->init();
-
-	//init();
-
-	//Menu* m = new Menu;
-
-	//m->init();
 	
-	graphics::setDrawFunction([g] {g->draw(); });
-	//graphics::setDrawFunction([m] { m->draw(); });
-	graphics::setUpdateFunction(update);
+	graphics::setDrawFunction([app] {app->draw(); });
+	graphics::setUpdateFunction([app](float) {app->update(1.0f); });
 	graphics::startMessageLoop();
-	//graphics::destroyWindow();
 
-	//delete m;
 	delete g;
 	delete app;
 

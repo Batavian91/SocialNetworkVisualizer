@@ -138,7 +138,6 @@
     <ClInclude Include="Connection.h" />
     <ClInclude Include="Edge.h" />
     <ClInclude Include="Graph.h" />
-    <ClInclude Include="Menu.h" />
     <ClInclude Include="Node.h" />
     <ClInclude Include="Person.h" />
   </ItemGroup>
@@ -148,7 +147,6 @@
     <ClCompile Include="Edge.cpp" />
     <ClCompile Include="Graph.cpp" />
     <ClCompile Include="Main.cpp" />
-    <ClCompile Include="Menu.cpp" />
     <ClCompile Include="Node.cpp" />
     <ClCompile Include="Person.cpp" />
     <ClCompile Include="Application.cpp" />

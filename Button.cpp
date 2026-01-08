@@ -1,9 +1,7 @@
 #include "Button.h"
 
 Button::Button(const std::string& text)
-	: m_x(0.0f), m_y(0.0f),
-	m_width(0.0f), m_height(0.0f),
-	button_text(text)
+	: BUTTON_TEXT(text)
 {
 	background_style.fill_color[0] = 0.9f;
 	background_style.fill_color[1] = 0.7f;
@@ -21,19 +19,34 @@ Button::Button(const std::string& text)
 	background_style.gradient = true;
 	background_style.gradient_dir_u = 0.4f;
 	background_style.gradient_dir_v = 0.5f;
-	text_style.fill_color[0] = 0.0f;
-	text_style.fill_color[1] = 0.0f;
-	text_style.fill_color[2] = 0.0f;
+	text_style.fill_color[0] = 1.0f;
+	text_style.fill_color[1] = 1.0f;
+	text_style.fill_color[2] = 1.0f;
 }
 
 Button::~Button()
 {
 }
 
-void Button::draw(float x, float y, float w, float h)
+float Button::getTextX(float x) const
+{
+	float letter;
+	if (BUTTON_TEXT == "SIMULATOR")
+		letter = 35.0f;
+	else 
+		letter = 31.0f;
+	float width = letter * BUTTON_TEXT.length();
+	return x - width / 2.0f;
+}
+
+float Button::getTextY(float y, float h) const
+{
+	return y + 0.3 * h;
+}
+
+void Button::drawButton(float x, float y, float w, float h)
 {
 	graphics::drawRect(x, y, w, h, background_style);
-	graphics::drawText(x - 1.5f * h, y + 0.4f * h, h,
-		button_text, text_style);
-	//button.draw(500.f, 100.0f, 200.0f, 50.0f);
+	graphics::drawText(getTextX(x), getTextY(y, h),
+		0.8f * h, BUTTON_TEXT, text_style);
 }

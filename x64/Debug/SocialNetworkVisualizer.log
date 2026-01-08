@@ -1,4 +1,4 @@
 ﻿  Application.cpp
-  Main.cpp
-  Generating Code...
+D:\AUEB\C++\Εργασία 2025-2026\SocialNetworkVisualizer\Application.cpp(59,41): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\AUEB\C++\Εργασία 2025-2026\SocialNetworkVisualizer\Application.cpp(61,41): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   SocialNetworkVisualizer.vcxproj -> D:\AUEB\C++\Εργασία 2025-2026\SocialNetworkVisualizer\x64\Debug\SocialNetworkVisualizer.exe
