@@ -1,5 +1,7 @@
 #include "Submenu.h"
 #include <graphics.h>
+#include "Button.h"
+#include "TextInput.h"
 
 Submenu* Submenu::instance = nullptr;
 
@@ -40,13 +42,15 @@ void Submenu::draw()
 {
 	graphics::Brush style;
 	style.fill_color[0] = 0.85f;
-	style.fill_color[1] = 0.10f;
+	style.fill_color[1] = 0.90f;
 	style.fill_color[2] = 0.92f;
 	graphics::setWindowBackground(style);
-	graphics::drawText(200.0f, 200.0f, 20.0f, 
-		"Type your name and press enter...", style);
+
+	username_input.draw(512.0f,125.0f, 400.0f, 68.0f);
+	
 }
 
 void Submenu::update(float ms)
 {
+	username_input.update(ms);
 }

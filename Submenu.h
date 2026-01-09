@@ -1,11 +1,13 @@
 #pragma once
 #include <string>
+#include "TextInput.h"
 
 class Submenu
 {
 private:
 	static Submenu* instance;
 	std::string name;
+	TextInput username_input;
 	Submenu();
 	~Submenu();
 public:
