@@ -43,11 +43,8 @@ void Submenu::draw()
 	style.fill_color[1] = 0.10f;
 	style.fill_color[2] = 0.92f;
 	graphics::setWindowBackground(style);
-	graphics::drawText(200.0f, 200.0f, 20.0f, "Type your name and press enter...", style);
-	if (graphics::getKeyState(graphics::SCANCODE_ESCAPE))
-	{
-		graphics::drawText(200.0f, 200.0f, 20.0f, "Out...", style);
-	}
+	graphics::drawText(200.0f, 200.0f, 20.0f, 
+		"Type your name and press enter...", style);
 }
 
 void Submenu::update(float ms)

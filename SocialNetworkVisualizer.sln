@@ -32,7 +32,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "assets", "assets", "{5262F1
 		assets\avatar_10_128.png = assets\avatar_10_128.png
 		assets\avatar_11_128.png = assets\avatar_11_128.png
 		assets\avatar_12_128.png = assets\avatar_12_128.png
-		assets\gothici.ttf = assets\gothici.ttf
 		assets\hit1.wav = assets\hit1.wav
 		assets\orange juice 2.0.ttf = assets\orange juice 2.0.ttf
 		assets\user.png = assets\user.png

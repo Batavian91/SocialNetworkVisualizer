@@ -103,7 +103,7 @@ void Application::update(float ms)
 		graphics::playSound("assets\\hit1.wav",
 			1.0f, false);
 
-		// TO BE ADDED AFTER GRAPH IS REFINED
+		// TO BE ADDED AFTER VISUALIZER IS FINISHED
 		//AppState state = AppState::GRAPH;
 		//graphics::setUserData(&state);
 	}

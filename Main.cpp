@@ -1,7 +1,7 @@
 #include "Application.h"
 #include "AppState.h"
-#include "Graph.h"
-#include "Button.h"
+#include "Submenu.h"
+#include "Visualizer.h"
 #include <graphics.h>
 
 void draw()
@@ -14,6 +14,19 @@ void draw()
 	{
 		Application* app = Application::getInstance();
 		app->draw();
+		break;
+	}
+	case AppState::SUBMENU:
+	{
+		//Submenu* menu = Submenu::getInstance();
+		//menu->draw();
+		//break;
+	}
+	case AppState::GRAPH:
+	{
+		//Visualizer* graph = Visualizer::getInstance();
+		//graph->draw();
+		//break;
 	}
 	default:
 		break;
@@ -32,7 +45,20 @@ void update(float ms)
 	case AppState::APP_RUN:
 	{
 		Application* app = Application::getInstance();
-		app->update(1.0f);
+		app->update(ms);
+		break;
+	}
+	case AppState::SUBMENU:
+	{
+		//Submenu* menu = Submenu::getInstance();
+		//menu->update(ms);
+		//break;
+	}
+	case AppState::GRAPH:
+	{
+		//Visualizer* graph = Visualizer::getInstance();
+		//graph->update(ms);
+		//break;
 	}
 	default:
 		break;
@@ -41,24 +67,10 @@ void update(float ms)
 
 int main()
 {
-
-	// THIS WILL BE MOVED IN THE GRAPH
-	// THE GRAPH WILL BE CHANGED
-	/*Graph* g = new Graph;
-	unsigned int id = g->addNode();
-	unsigned int id2 = g->addNode();
-	unsigned int id3 = g->addNode();
-	unsigned int id4 = g->addNode();
-	unsigned int id5 = g->addNode();
-	unsigned int id6 = g->addNode();
-	g->addEdge(g->getNode(id), g->getNode(id2));
-	g->addEdge(g->getNode(id3), g->getNode(id6));
-	g->addEdge(g->getNode(id3), g->getNode(id5));
-	g->addEdge(g->getNode(id4), g->getNode(id5));
-	g->addEdge(g->getNode(id6), g->getNode(id2));
-	delete g;*/
-
 	Application* app = Application::getInstance();
+	Submenu* menu = Submenu::getInstance();
+	//Visualizer* graph = Visualizer::getInstance();
+
 	app->init();
 
 	AppState state = AppState::APP_RUN;
@@ -70,6 +82,8 @@ int main()
 	graphics::destroyWindow();
 
 	app->releaseInstance();
+	menu->releaseInstance();
+	//graph->releaseInstance();
 
 	return 0;
 }
