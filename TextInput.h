@@ -8,7 +8,7 @@ private:
 	graphics::Brush background_style;
 	graphics::Brush text_style;
 	std::string state;
-	graphics::scancode_t getPressedKey();
+	void handleKeyboardInput();
 public:
 	TextInput();
 	~TextInput();

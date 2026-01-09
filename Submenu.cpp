@@ -46,7 +46,7 @@ void Submenu::draw()
 	style.fill_color[2] = 0.92f;
 	graphics::setWindowBackground(style);
 
-	username_input.draw(512.0f,125.0f, 400.0f, 68.0f);
+	username_input.draw(512.0f,125.0f, 800.0f, 68.0f);
 	
 }
 

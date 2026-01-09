@@ -1,21 +1,6 @@
 #include "TextInput.h"
-
-graphics::scancode_t TextInput::getPressedKey()
-{
-	{
-		for (int i = 1; i < graphics::scancode_t::NUM_SCANCODES; i++)
-		{
-			graphics::scancode_t key = static_cast<graphics::scancode_t>(i);
-			if (getKeyState(key))
-			{
-				return key;
-			}
-		}
-		
-		return graphics::SCANCODE_UNKNOWN;
-	}
-}
-
+#include "Helpers.h"
+ 
 TextInput::TextInput()
 { 
 	background_style.fill_color[0] = 1.0f;
@@ -61,5 +46,50 @@ void TextInput::draw(float x, float y, float width, float height)
 }
 
 void TextInput::update(float ms) 
-{
+{ 
+	handleKeyboardInput();
+
+	updateKeyStates();
+}
+
+void TextInput::handleKeyboardInput() { 
+	graphics::scancode_t key = getKeyPressed();
+	
+	if (key == graphics::SCANCODE_UNKNOWN)
+		return;
+
+	if (!isKeyJustPressed(key)) {
+		return;
+	}
+	
+	bool shift = graphics::getKeyState(graphics::SCANCODE_LSHIFT) || graphics::getKeyState(graphics::SCANCODE_RSHIFT);
+	
+	if (key == graphics::SCANCODE_BACKSPACE)
+	{
+		if (!state.empty())
+		{
+			state.pop_back();
+		}
+		return;
+	}
+	
+	if (key == graphics::SCANCODE_RETURN)
+	{
+		return;
+	}
+	
+	if (key == graphics::SCANCODE_TAB)
+	{
+		return;
+	}
+	
+	char c = scancodeToChar(key, shift);
+	
+	if (c != '\0')
+	{
+		state += c;
+		return;
+	}
+	
+	return;
 }
