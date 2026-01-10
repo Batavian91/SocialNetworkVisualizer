@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include "TextInput.h"
+#include "Button.h"
 
 class Submenu
 {
@@ -8,6 +9,7 @@ private:
 	static Submenu* instance;
 	std::string name;
 	TextInput username_input;
+	Button input_button;
 	Submenu();
 	~Submenu();
 public:
