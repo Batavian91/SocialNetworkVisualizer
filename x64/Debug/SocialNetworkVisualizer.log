@@ -1,2 +1,7 @@
-﻿  Main.cpp
+﻿  Connection.cpp
+  Edge.cpp
+  Graph.cpp
+  Node.cpp
+  Person.cpp
+  Generating Code...
   SocialNetworkVisualizer.vcxproj -> D:\AUEB\C++\Εργασία 2025-2026\SocialNetworkVisualizer\x64\Debug\SocialNetworkVisualizer.exe

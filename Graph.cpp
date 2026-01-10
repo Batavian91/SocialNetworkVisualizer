@@ -7,20 +7,21 @@ Graph::Graph()
 
 Graph::~Graph()
 {
-	std::unordered_map<unsigned int, Edge*>::iterator e_iter;
+	std::unordered_map<unsigned int, Connection*>::iterator e_iter;
 
 	for (e_iter = map_of_edges.begin(); e_iter != map_of_edges.end(); ++e_iter)
 		delete e_iter->second;
 
-	std::unordered_map<unsigned int, Node*>::iterator n_iter;
+	std::unordered_map<unsigned int, Person*>::iterator n_iter;
 
 	for (n_iter = map_of_nodes.begin(); n_iter != map_of_nodes.end(); ++n_iter)
 		delete n_iter->second;
 }
 
-unsigned int Graph::addNode()
+unsigned int Graph::addNode(float x, float y, float w, float h,
+	const std::string& name, const std::string& path)
 {
-	Node* node = new Person;
+	Person* node = new Person(x, y, w, h, name, path);
 	map_of_nodes.insert({ node->getUID(), node });
 
 	return node->getUID();
@@ -28,7 +29,7 @@ unsigned int Graph::addNode()
 
 void Graph::removeNode(unsigned int nodeId)
 {
-	std::unordered_map<unsigned int, Node*>::iterator iter =
+	std::unordered_map<unsigned int, Person*>::iterator iter =
 		map_of_nodes.find(nodeId);
 
 	if (iter != map_of_nodes.end())
@@ -45,27 +46,44 @@ void Graph::removeNode(unsigned int nodeId)
 	}
 }
 
-unsigned int Graph::addEdge(Node* n1, Node* n2)
+unsigned int Graph::addEdge(unsigned int n1, unsigned int n2)
 {
-	Edge* edge = new Connection;
-	map_of_edges.insert({ edge->getUID(), edge });
+	Person* start = nullptr;
+	Person* end = nullptr;
+	std::unordered_map<unsigned int, Person*>::iterator iter;
+	
+	iter =	map_of_nodes.find(n1);
+	if (iter != map_of_nodes.end())
+		start = iter->second;
 
-	// add edge to the first node
-	n1->addEdgeConnection(edge);
-	// add first node to the edge
-	edge->setStartingNode(n1);
+	iter =	map_of_nodes.find(n2);
+	if (iter != map_of_nodes.end())
+		end = iter->second;
 
-	// add edge to the second node
-	n2->addEdgeConnection(edge);
-	// add second node to the edge
-	edge->setEndingNode(n2);
+	if (start && end)
+	{
+		Connection* edge = new Connection;
+		map_of_edges.insert({ edge->getUID(), edge });
 
-	return edge->getUID();
+		// add edge to the first node
+		start->addEdgeConnection(edge);
+		// add first node to the edge
+		edge->setStartingNode(start);
+
+		// add edge to the second node
+		end->addEdgeConnection(edge);
+		// add second node to the edge
+		edge->setEndingNode(end);
+
+		return edge->getUID();
+	}
+
+	return 0;
 }
 
 void Graph::removeEdge(unsigned int edgeId)
 {
-	std::unordered_map<unsigned int, Edge*>::iterator iter =
+	std::unordered_map<unsigned int, Connection*>::iterator iter =
 		map_of_edges.find(edgeId);
 
 	if (iter != map_of_edges.end())
@@ -77,33 +95,26 @@ void Graph::removeEdge(unsigned int edgeId)
 		map_of_edges.erase(iter);
 	}
 }
-Node* Graph::getNode(unsigned int nodeId)
-{
-	return map_of_nodes[nodeId];
-}
 
 void Graph::draw() 
-{/*
+{
 	float x = 0.0f;
 	float y = 200.0f;
-	for (std::pair<unsigned int, Node*> node: map_of_nodes) 
+
+	for (std::pair<unsigned int, Connection*> edge : map_of_edges)
+	{
+		edge.second->draw();
+	}
+
+	for (std::pair<unsigned int, Person*> node: map_of_nodes) 
 	{
 		x += 100.0f;
 		y = y == 200.0f ? 300.0f : 200.0f;
-		node.second->draw(x, y, 60.0f, 60.0f);
+		//node.second->draw(x, y, 60.0f, 60.0f);
 	}
-	for (std::pair<unsigned int, Edge*> edge: map_of_edges) 
-	{
-		edge.second->draw();
-	} */
 
-	Button button0("NEW PROFILE");
-	button0.drawButton(512.f, 125.0f, 400.0f, 68.0f);
+}
 
-	Button button1("SIMULATOR");
-	button1.drawButton(512.f, 250.0f, 400.0f, 68.0f);
-
-	Button button2("EXIT");
-	button2.drawButton(512.f, 375.0f, 400.0f, 68.0f);
-
+void Graph::update()
+{
 }

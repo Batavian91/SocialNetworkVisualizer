@@ -1,6 +1,6 @@
 #pragma once
 #include "Edge.h"
-#include <vector>
+#include "VisualAsset.h"
 #include <unordered_map>
 
 /*
@@ -16,7 +16,7 @@
  // forward declaration to avoid circular dependency
 class Edge;
 
-class Node
+class Node : public VisualAsset
 {
 private:
 	// a generator of unique ids
@@ -35,7 +35,7 @@ private:
 
 public:
 	// Node constructor
-	Node();
+	Node(float, float);
 
 	// Node destructor -> virtual
 	// Node can be used as a base class
@@ -62,13 +62,4 @@ public:
 	// to remove all its connected Edges. This is a 
 	// getter for the Node's connected edges.
 	std::vector<unsigned int> getConnectedEdges() const;
-
-	// pure virtual - returns x-axis coordinate
-	virtual float getX() const = 0;
-
-	// pure virtual - returns y-axis coordinate
-	virtual float getY() const = 0;
-
-	// pure virtual - draws a Node 
-	virtual void draw(float, float, float, float) = 0;
 };

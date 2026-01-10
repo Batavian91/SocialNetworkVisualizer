@@ -1,24 +1,17 @@
 #include "Application.h"
-#include "AppState.h"
-#include "Button.h"
+#include "Menu.h"
 #include <graphics.h>
 
 Application* Application::app_instance = nullptr;
 
 Application::Application()
-	: WINDOW_WIDTH(1200),
-	WINDOW_HEIGHT(600),
-	CANVAS_WIDTH(1024.0f),
-	CANVAS_HEIGHT(512.0f),
-	BUTTON_X(512.0f),
-	BUTTON_Y(125.0f),
-	BUTTON_WIDTH(400.0f),
-	BUTTON_HEIGHT(68.0f)
 {
+	menu = new Menu;
 }
 
 Application::~Application()
 {
+	delete menu;
 }
 
 Application* Application::getInstance()
@@ -29,7 +22,7 @@ Application* Application::getInstance()
 	return app_instance;
 }
 
-void Application::releaseInstance()
+void Application::deleteInstance()
 {
 	if (app_instance)
 		delete app_instance;
@@ -37,11 +30,11 @@ void Application::releaseInstance()
 
 void Application::init()
 {
-	graphics::createWindow(WINDOW_WIDTH, WINDOW_HEIGHT,
-		"Social Network Visualizer");
-	graphics::setCanvasSize(CANVAS_WIDTH, CANVAS_HEIGHT);
-	graphics::setCanvasScaleMode(graphics::
-		CANVAS_SCALE_FIT);
+	graphics::createWindow(getWindowWidth(),
+		getWindowHeight(), "Social Network Visualizer");
+	graphics::setCanvasSize(getCanvasWidth(),
+		getCanvasHeight());
+	graphics::setCanvasScaleMode(graphics::CANVAS_SCALE_FIT);
 
 	graphics::setFont("assets\\orange juice 2.0.ttf");
 
@@ -54,65 +47,17 @@ void Application::init()
 
 void Application::draw()
 {
-	Button button0("NEW PROFILE");
-	button0.drawButton(BUTTON_X, BUTTON_Y,
-		BUTTON_WIDTH, BUTTON_HEIGHT);
-
-	Button button1("SIMULATOR");
-	button1.drawButton(BUTTON_X, 2.0f * BUTTON_Y,
-		BUTTON_WIDTH, BUTTON_HEIGHT);
-
-	Button button2("EXIT");
-	button2.drawButton(BUTTON_X, 3.0f * BUTTON_Y,
-		BUTTON_WIDTH, BUTTON_HEIGHT);
+	if (getState() == AppState::MAIN_MENU)
+	{
+		menu->draw();
+	}
 }
 
-void Application::update(float ms)
+void Application::update()
 {
-	graphics::MouseState mouse;
-	graphics::getMouseState(mouse);
-
-	float mouse_pos_x =
-		(float)graphics::windowToCanvasX(mouse.cur_pos_x);
-	float mouse_pos_y =
-		(float)graphics::windowToCanvasY(mouse.cur_pos_y);
-
-	if (mouse.button_left_pressed
-		&& mouse_pos_x > BUTTON_X - 0.5f * BUTTON_WIDTH
-		&& mouse_pos_x < BUTTON_X + 0.5f * BUTTON_WIDTH
-		&& mouse_pos_y > BUTTON_Y - 0.5f * BUTTON_HEIGHT
-		&& mouse_pos_y < BUTTON_Y + 0.5f * BUTTON_HEIGHT)
+	if (getState() == AppState::MAIN_MENU)
 	{
-		graphics::playSound("assets\\hit1.wav",
-			1.0f, false);
+		menu->update();
+	}
 
-		// TO BE ADDED AFTER SUBMENU IS FINISHED
-		//AppState state = AppState::SUBMENU;
-		//graphics::setUserData(&state);
-	}
-	else if (mouse.button_left_pressed
-		&& mouse_pos_x > BUTTON_X - 0.5f * BUTTON_WIDTH
-		&& mouse_pos_x < BUTTON_X + 0.5f * BUTTON_WIDTH
-		&& mouse_pos_y > 2.0f * BUTTON_Y - 0.5f * BUTTON_HEIGHT
-		&& mouse_pos_y < 2.0f * BUTTON_Y + 0.5f * BUTTON_HEIGHT)
-	{
-		graphics::playSound("assets\\hit1.wav",
-			1.0f, false);
-		graphics::playSound("assets\\hit1.wav",
-			1.0f, false);
-		graphics::playSound("assets\\hit1.wav",
-			1.0f, false);
-
-		// TO BE ADDED AFTER VISUALIZER IS FINISHED
-		//AppState state = AppState::GRAPH;
-		//graphics::setUserData(&state);
-	}
-	else if (mouse.button_left_pressed
-		&& mouse_pos_x > BUTTON_X - 0.5f * BUTTON_WIDTH
-		&& mouse_pos_x < BUTTON_X + 0.5f * BUTTON_WIDTH
-		&& mouse_pos_y > 3.0f * BUTTON_Y - 0.5f * BUTTON_HEIGHT
-		&& mouse_pos_y < 3.0f * BUTTON_Y + 0.5f * BUTTON_HEIGHT)
-	{
-		graphics::stopMessageLoop();
-	}
 }

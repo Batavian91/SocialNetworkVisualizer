@@ -3,8 +3,6 @@
 
 class Connection : public Edge
 {
-private:
-
 public:
 	// Connection constructor
 	Connection();
@@ -14,5 +12,5 @@ public:
 
 	// implements base's class function 
 	// draw() - connects two Persons
-	void draw();
+	void draw() override;
 };

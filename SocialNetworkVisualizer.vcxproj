@@ -138,23 +138,27 @@
     <ClInclude Include="Button.h" />
     <ClInclude Include="Connection.h" />
     <ClInclude Include="Edge.h" />
+    <ClInclude Include="GlobalState.h" />
     <ClInclude Include="Graph.h" />
+    <ClInclude Include="Menu.h" />
     <ClInclude Include="Node.h" />
     <ClInclude Include="Person.h" />
-    <ClInclude Include="Submenu.h" />
-    <ClInclude Include="Visualizer.h" />
+    <ClInclude Include="Rectangle.h" />
+    <ClInclude Include="VisualAsset.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="Connection.cpp" />
     <ClCompile Include="Edge.cpp" />
+    <ClCompile Include="GlobalState.cpp" />
     <ClCompile Include="Graph.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Menu.cpp" />
     <ClCompile Include="Node.cpp" />
     <ClCompile Include="Person.cpp" />
     <ClCompile Include="Application.cpp" />
-    <ClCompile Include="Submenu.cpp" />
-    <ClCompile Include="Visualizer.cpp" />
+    <ClCompile Include="Rectangle.cpp" />
+    <ClCompile Include="VisualAsset.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

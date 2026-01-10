@@ -2,8 +2,7 @@
 
 enum class AppState
 {
-	APP_RUN,
-	SUBMENU,
+	MAIN_MENU,
 	GRAPH,
 	EXIT
 };

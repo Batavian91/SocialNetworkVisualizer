@@ -1,44 +1,35 @@
 #include "Person.h"
-#include <graphics.h>
 
-Person::Person()
-	: m_x(0.0f), m_y(0.0f),
-	m_width(0.0f), m_height(0.0f)
+Person::Person(float x, float y, float w, float h, 
+	const std::string& newName, const std::string& path)
+	: Node(x, y),
+	Rectangle(w, h),
+	name(newName)
 {
+	style.fill_color[0] = 0.5f;
+	style.fill_color[1] = 0.0f;
+	style.fill_color[2] = 0.0f;
+	style.outline_opacity = 0.0f;
+	style.texture = path;
 }
 
 Person::~Person()
 {
 }
 
-float Person::getX() const
+const std::string& Person::getName() const
 {
-	return m_x;
+	return name;
 }
 
-float Person::getY() const
+void Person::draw()
 {
-	return m_y;
-}
+	float x = getX();
+	float y = getY();
+	float w = getWidth();
+	float h = getHeight();
 
-void Person::draw(float x, float y, float w, float h)
-{
-	m_x = x;
-	m_y = y;
-	m_width = w;
-	m_height = h;
-
-	graphics::Brush brush;
-
-	brush.texture = "assets\\avatar_01_128.png";
-	/*
-	brush.outline_opacity = 0.0f;
-	brush.fill_color[0] = 0.5f;
-	brush.fill_color[1] = 0.0f;
-	brush.fill_color[2] = 0.0f;
-	*/
-	graphics::drawRect(x, y, w, h, brush);
-	graphics::drawText(x - w / 2, y + h, 10.0f,
-		"Person " + std::to_string(getUID()), brush);
-	graphics::resetPose();
+	graphics::drawRect(x, y, w, h, style);
+	graphics::drawText(x - w / 2, y + h,
+		10.0f, name, style);
 }

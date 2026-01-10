@@ -9,7 +9,8 @@ unsigned int Edge::active_edges = 0;
 
 Edge::Edge()
 	: uid(++global_edge_id),
-	start(nullptr), end(nullptr)
+	start(nullptr), end(nullptr),
+	VisualAsset(0.0f, 0.0f)
 {
 #ifdef _DEBUG
 	std::cout << "Edge constructor: " << uid << std::endl;

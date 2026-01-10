@@ -1,5 +1,6 @@
 #pragma once
 #include "Node.h"
+#include "VisualAsset.h"
 
 /*
  * Class Edge represents an edge that
@@ -14,7 +15,7 @@
  // circular dependency
 class Node;
 
-class Edge
+class Edge : public VisualAsset
 {
 private:
 	// a generator of unique ids
@@ -58,8 +59,4 @@ public:
 
 	// second connected Node getter
 	Node* getEndingNode() const;
-
-	// pure virtual - draws an Edge 
-	// that connects two Nodes
-	virtual void draw() = 0;
 };

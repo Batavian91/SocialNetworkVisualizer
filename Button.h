@@ -1,17 +1,18 @@
 #pragma once
-#include <graphics.h>
-#include <string>
+#include "Rectangle.h"
+#include "VisualAsset.h"
 
-class Button
+class Button : public Rectangle, public VisualAsset
 {
 private:
 	const std::string BUTTON_TEXT;
-	graphics::Brush background_style;
 	graphics::Brush text_style;
 public:
-	Button(const std::string&);
+	Button();
+	Button(float, float, float, float,
+		const std::string&);
 	~Button();
 	float getTextX(float) const;
 	float getTextY(float, float) const;
-	void drawButton(float, float, float, float);
+	void draw() override;
 };

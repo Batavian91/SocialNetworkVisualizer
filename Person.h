@@ -1,33 +1,23 @@
 #pragma once
 #include "Node.h"
+#include "Rectangle.h"
 
-class Person : public Node
+class Person : public Node,
+	public Rectangle
 {
 private:
-	// x-axis coordinate
-	float m_x;
-
-	// y-axis coordinate
-	float m_y;
-
-	// width value
-	float m_width;
-
-	// height value
-	float m_height;
+	// a person's name
+	const std::string name;
 
 public:
 	// Person constructor
-	Person();
+	Person(float, float, float, float, 
+		const std::string&, const std::string&);
 
 	// Person destructor
 	~Person();
 
-	// getters for each Node's coordinates and sizes
-	float getX() const;
-	float getY() const;
+	const std::string& getName() const;
 
-	// implements base's class function 
-	// draw() - draws a Person
-	void draw(float, float, float, float);
+	void draw() override;
 };

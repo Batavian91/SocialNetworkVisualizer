@@ -7,8 +7,9 @@
 unsigned int Node::global_node_id = 0;
 unsigned int Node::active_nodes = 0;
 
-Node::Node()
-	: uid(++global_node_id)
+Node::Node(float x, float y)
+	: uid(++global_node_id),
+	VisualAsset(x, y)
 {
 #ifdef _DEBUG
 	std::cout << "Node constructor: " << uid << std::endl;
